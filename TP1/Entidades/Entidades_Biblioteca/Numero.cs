@@ -17,22 +17,41 @@ namespace Entidades_Biblioteca
         }
         public Numero(double numero)
         {
-            this.numero = numero;
+           this.numero = numero;
         }
+        
+        private string SetNumero 
+        {
+            set
+            {
+                this.numero = ValidarNumero(value);
+            } 
+        } 
+
         public Numero(string strNumero)
         {
-            double num1;
-            if (!double.TryParse(strNumero, out num1)) 
-                this.numero = 0;
-            this.numero = num1;
+            SetNumero = strNumero;
         }
+
+        #region Conversión
+
         public string BinarioDecimal(string binario)
         {
-            return "";
+            double resultado = 0;
+            binario = (Math.Abs(int.Parse(binario))).ToString();
+
+            for (int i = 0; i < binario.Length; i++)
+            {
+                if (binario.Substring(i, 1) == "1")
+                {
+                    resultado = resultado + Math.Pow(2, i);
+                }
+            }
+            return resultado.ToString();
         }
         public string DecimalBinario(double numero)
         {
-            double resto = numero;
+            int resto = Math.Abs((int)numero);
             string auxString = "";
 
             if (numero >= 2)
@@ -40,13 +59,10 @@ namespace Entidades_Biblioteca
                 while (resto / 2 >= 1)
                 {
                     if (resto % 2 == 0)
-                    {
                         auxString = "0" + auxString;
-                    }
                     else
-                    {
                         auxString = "1" + auxString;
-                    }
+
                     resto = resto / 2;
                 }
                 auxString = "1" + auxString;
@@ -55,31 +71,23 @@ namespace Entidades_Biblioteca
             else 
             {
                 if (numero > 0)
-                {
-                    auxString = numero.ToString();
-                    return auxString;
-                }
+                    return numero.ToString();
                 else
                     return "0";
             }
         }
         public string DecimalBinario(string numero)
         {
-            if (ValidarNumero(numero) >= 0)
-            {
-                double resultado=0;
-
-                for (int i = 0; i < numero.Length; i++)
-                {
-                    if (numero.Substring(i, 1) == "1")
-                    {
-                        resultado = resultado + Math.Pow(2, i);
-                    }
-                }
-                return resultado.ToString();
-            }
-            return "0";
+            if(!double.TryParse(numero,out double num1))
+                return "0";
+            else
+                return DecimalBinario(num1);
         }
+
+        #endregion
+
+
+        #region Operaciones
 
         public static double operator + (Numero n1,Numero n2)
         {
@@ -97,18 +105,19 @@ namespace Entidades_Biblioteca
         {
             if (n2.numero == 0)
             {
-                return 0;
+                return double.MinValue;
             }
             return (n1.numero / n2.numero);
         }
+
+        #endregion
+
         public static double ValidarNumero(string strNumero)
         {
             double numero;
 
             if (!double.TryParse(strNumero,out numero))
-            {
                 numero = 0;
-            }
             return numero;
         }
     }

@@ -1,0 +1,6 @@
+D:\UTN\Practicas Visual Studio C#\tp_laboratorio_2\TP1\Entidades\Entidades_Biblioteca\bin\Debug\Entidades_Biblioteca.dll
+D:\UTN\Practicas Visual Studio C#\tp_laboratorio_2\TP1\Entidades\Entidades_Biblioteca\bin\Debug\Entidades_Biblioteca.pdb
+D:\UTN\Practicas Visual Studio C#\tp_laboratorio_2\TP1\Entidades\Entidades_Biblioteca\obj\Debug\Entidades_Biblioteca.csprojAssemblyReference.cache
+D:\UTN\Practicas Visual Studio C#\tp_laboratorio_2\TP1\Entidades\Entidades_Biblioteca\obj\Debug\Entidades_Biblioteca.csproj.CoreCompileInputs.cache
+D:\UTN\Practicas Visual Studio C#\tp_laboratorio_2\TP1\Entidades\Entidades_Biblioteca\obj\Debug\Entidades_Biblioteca.dll
+D:\UTN\Practicas Visual Studio C#\tp_laboratorio_2\TP1\Entidades\Entidades_Biblioteca\obj\Debug\Entidades_Biblioteca.pdb
