@@ -17,7 +17,7 @@ namespace Entidades_Biblioteca
         }
         public Numero(double numero)
         {
-           this.numero = numero;
+            SetNumero = numero.ToString();   
         }
         
         private string SetNumero 
@@ -35,21 +35,21 @@ namespace Entidades_Biblioteca
 
         #region Conversión
 
-        public string BinarioDecimal(string binario)
+        public static string BinarioDecimal(string binario)
         {
             double resultado = 0;
             binario = (Math.Abs(int.Parse(binario))).ToString();
 
             for (int i = 0; i < binario.Length; i++)
             {
-                if (binario.Substring(i, 1) == "1")
+                if (binario.Substring((binario.Length-1)-i, 1) == "1")
                 {
                     resultado = resultado + Math.Pow(2, i);
                 }
             }
             return resultado.ToString();
         }
-        public string DecimalBinario(double numero)
+        public static string DecimalBinario(double numero)
         {
             int resto = Math.Abs((int)numero);
             string auxString = "";
@@ -76,7 +76,7 @@ namespace Entidades_Biblioteca
                     return "0";
             }
         }
-        public string DecimalBinario(string numero)
+        public static string DecimalBinario(string numero)
         {
             if(!double.TryParse(numero,out double num1))
                 return "0";
@@ -118,6 +118,7 @@ namespace Entidades_Biblioteca
 
             if (!double.TryParse(strNumero,out numero))
                 numero = 0;
+
             return numero;
         }
     }
