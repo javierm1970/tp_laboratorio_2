@@ -5,7 +5,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Entidades_Biblioteca
+namespace Entidades
 {
     public class Numero
     {
@@ -17,16 +17,16 @@ namespace Entidades_Biblioteca
         }
         public Numero(double numero)
         {
-            SetNumero = numero.ToString();   
+            SetNumero = numero.ToString();
         }
-        
-        private string SetNumero 
+
+        private string SetNumero
         {
             set
             {
                 this.numero = ValidarNumero(value);
-            } 
-        } 
+            }
+        }
 
         public Numero(string strNumero)
         {
@@ -42,7 +42,7 @@ namespace Entidades_Biblioteca
 
             for (int i = 0; i < binario.Length; i++)
             {
-                if (binario.Substring((binario.Length-1)-i, 1) == "1")
+                if (binario.Substring((binario.Length - 1) - i, 1) == "1")
                 {
                     resultado = resultado + Math.Pow(2, i);
                 }
@@ -68,7 +68,7 @@ namespace Entidades_Biblioteca
                 auxString = "1" + auxString;
                 return auxString;
             }
-            else 
+            else
             {
                 if (numero > 0)
                     return numero.ToString();
@@ -78,7 +78,7 @@ namespace Entidades_Biblioteca
         }
         public static string DecimalBinario(string numero)
         {
-            if(!double.TryParse(numero,out double num1))
+            if (!double.TryParse(numero, out double num1))
                 return "0";
             else
                 return DecimalBinario(num1);
@@ -89,19 +89,19 @@ namespace Entidades_Biblioteca
 
         #region Operaciones
 
-        public static double operator + (Numero n1,Numero n2)
+        public static double operator +(Numero n1, Numero n2)
         {
             return (n1.numero + n2.numero);
         }
-        public static double operator - (Numero n1, Numero n2)
+        public static double operator -(Numero n1, Numero n2)
         {
             return (n1.numero - n2.numero);
         }
-        public static double operator * (Numero n1, Numero n2)
+        public static double operator *(Numero n1, Numero n2)
         {
             return (n1.numero * n2.numero);
         }
-        public static double operator / (Numero n1, Numero n2)
+        public static double operator /(Numero n1, Numero n2)
         {
             if (n2.numero == 0)
             {
@@ -116,7 +116,7 @@ namespace Entidades_Biblioteca
         {
             double numero;
 
-            if (!double.TryParse(strNumero,out numero))
+            if (!double.TryParse(strNumero, out numero))
                 numero = 0;
 
             return numero;
