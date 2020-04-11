@@ -28,7 +28,7 @@ namespace Entidades
             }
         }
 
-        public Numero(string strNumero)
+        public Numero(string strNumero) 
         {
             SetNumero = strNumero;
         }
@@ -38,23 +38,31 @@ namespace Entidades
         public static string BinarioDecimal(string binario)
         {
             double resultado = 0;
-            binario = (Math.Abs(int.Parse(binario))).ToString();
+            string strBinario = (Math.Abs(double.Parse(binario))).ToString();
 
-            for (int i = 0; i < binario.Length; i++)
+            for (int i = 0; i < strBinario.Length; i++)
             {
-                if (binario.Substring((binario.Length - 1) - i, 1) == "1")
+                if (strBinario.Substring((strBinario.Length - 1) - i, 1) == "1")
                 {
                     resultado = resultado + Math.Pow(2, i);
                 }
+
+                else if (strBinario.Substring((strBinario.Length - 1) - i, 1) != "0")
+                {
+                    return binario;
+                }
+
             }
             return resultado.ToString();
         }
         public static string DecimalBinario(double numero)
         {
             int resto = Math.Abs((int)numero);
+            string numString = Math.Abs(resto).ToString();
+            
             string auxString = "";
 
-            if (numero >= 2)
+            if (Math.Abs(numero) >= 2)
             {
                 while (resto / 2 >= 1)
                 {
@@ -115,8 +123,21 @@ namespace Entidades
         public static double ValidarNumero(string strNumero)
         {
             double numero;
+            string nuevoString="";
+            int contador = 0;
 
-            if (!double.TryParse(strNumero, out numero))
+            foreach(char i in strNumero)
+            {
+                if (i == '.')
+                {
+                    nuevoString += ",";
+                    contador++;
+                }
+                else
+                    nuevoString += i;
+            }
+
+            if (!double.TryParse(nuevoString, out numero))
                 numero = 0;
 
             return numero;
