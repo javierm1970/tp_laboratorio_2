@@ -130,8 +130,9 @@ namespace Entidades
             {
                 if (i == '.')
                 {
-                    nuevoString += ",";
                     contador++;
+                    if (contador <= 1)
+                        nuevoString += ",";
                 }
                 else
                     nuevoString += i;

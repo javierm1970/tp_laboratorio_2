@@ -62,6 +62,13 @@ namespace Entidades
         private void btnOperar_Click(object sender, EventArgs e)
         {
             double resultado;
+            if (txtNumero1 is null)
+                txtNumero1.Text = "0";
+            if (txtNumero2 is null)
+                txtNumero2.Text = "0";
+            if (cmbOperador.SelectedItem is null)
+                cmbOperador.SelectedIndex=0;
+
             resultado = Operar(txtNumero1.Text, txtNumero2.Text, cmbOperador.SelectedItem.ToString());
 
             lblResultado.Text = resultado.ToString();
