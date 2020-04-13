@@ -69,6 +69,7 @@ namespace Entidades
             if (cmbOperador.SelectedItem is null)
                 cmbOperador.SelectedIndex=0;
 
+            
             resultado = Operar(txtNumero1.Text, txtNumero2.Text, cmbOperador.SelectedItem.ToString());
 
             lblResultado.Text = resultado.ToString();
@@ -93,19 +94,10 @@ namespace Entidades
         }
         private static double Operar(string numero1,string numero2, string operador)
         {
-            
             Numero n1 = new Numero(numero1);
             Numero n2 = new Numero(numero2);
 
-            if (operador == "")
-            {
-                MessageBox.Show("Error, debe seleccionar una operacion");
-            }
-            else
-            {
-                return double.Parse(Calculadora.Operar(n1, n2, operador));
-            }
-            return double.MinValue;
+            return double.Parse(Calculadora.Operar(n1, n2, operador));
         }
 
         private void btnConvertirABinario_Click(object sender, EventArgs e)

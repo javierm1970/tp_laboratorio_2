@@ -113,7 +113,7 @@ namespace Entidades
         {
             if (n2.numero == 0)
             {
-                return double.MinValue;
+                return -1.7976931348623157E+307;
             }
             return (n1.numero / n2.numero);
         }

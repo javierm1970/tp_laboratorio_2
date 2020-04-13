@@ -30,8 +30,6 @@ namespace Entidades
                 case "*":
                     return (num1 * num2).ToString();
                 case "/":
-                    if (num1 / num2 == 0)
-                        return "Error no es posible dividir por 0";
                     return (num1 / num2).ToString();
                 default:
                     /*si bien esta validado anteriormente coloco default porque sino 
