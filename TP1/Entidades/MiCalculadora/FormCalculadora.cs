@@ -19,45 +19,6 @@ namespace Entidades
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-                    
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-
-        }
         /// <summary>
         /// metodo que valida si los texBox no son nulos y llama al metodo operar 
         /// que realizara el calculo matematico
@@ -149,11 +110,6 @@ namespace Entidades
             {
                 lblResultado.Text = Numero.BinarioDecimal(lblResultado.Text);
             }
-        }
-
-        private void txtNumero1_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

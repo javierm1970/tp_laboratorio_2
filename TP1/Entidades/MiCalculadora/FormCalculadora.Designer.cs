@@ -47,7 +47,7 @@
             this.lblResultado.Size = new System.Drawing.Size(758, 55);
             this.lblResultado.TabIndex = 5;
             this.lblResultado.TextAlign = System.Drawing.ContentAlignment.BottomRight;
-            this.lblResultado.Click += new System.EventHandler(this.label1_Click);
+            //this.lblResultado.Click += new System.EventHandler(this.label1_Click);
             // 
             // txtNumero1
             // 
@@ -59,7 +59,7 @@
             this.txtNumero1.Size = new System.Drawing.Size(310, 82);
             this.txtNumero1.TabIndex = 0;
             this.txtNumero1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtNumero1.TextChanged += new System.EventHandler(this.txtNumero1_TextChanged);
+            //this.txtNumero1.TextChanged += new System.EventHandler(this.txtNumero1_TextChanged);
             // 
             // txtNumero2
             // 
@@ -91,7 +91,7 @@
             this.cmbOperador.Name = "cmbOperador";
             this.cmbOperador.Size = new System.Drawing.Size(126, 81);
             this.cmbOperador.TabIndex = 1;
-            this.cmbOperador.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            //this.cmbOperador.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // btnOperar
             // 
@@ -164,7 +164,7 @@
             this.Name = "FormCalculadora";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Calculadora de Javier Magdaleno Curso: 2ºF";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            //this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
