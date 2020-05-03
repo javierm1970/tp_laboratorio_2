@@ -18,8 +18,10 @@ namespace TP_02_2018
             // Nombre del alumno
             Console.Title = "";
 
+            //Declaro e instancio un Objeto estacionamiento (Clase Estacionamiento)
             Estacionamiento estacionamiento = new Estacionamiento(6);
 
+            //instancio Objetos c1 y c2 (Clase Moto) m1 m2 (Clase Automovil) a1 ,a2, a3 y a4 (Clase Camioneta) 
             Moto c1 = new Moto(Vehiculo.EMarca.BMW, "ASD012", ConsoleColor.Black);
             Moto c2 = new Moto(Vehiculo.EMarca.Honda, "ASD913", ConsoleColor.Red);
             Automovil m1 = new Automovil(Vehiculo.EMarca.Toyota, "HJK789", ConsoleColor.White);
@@ -47,7 +49,9 @@ namespace TP_02_2018
 
             // Quito 2 items y muestro
             estacionamiento -= c1;
-            estacionamiento -= new Moto(Vehiculo.EMarca.Honda, "ASD913", ConsoleColor.Red);
+            estacionamiento -= c2;
+            
+            //estacionamiento -= new Moto(Vehiculo.EMarca.Honda, "ASD913", ConsoleColor.Red);
 
             Console.WriteLine(estacionamiento.ToString());
             Console.WriteLine("<-----------PRESIONE UNA TECLA PARA CONTINUAR----------->");
@@ -59,8 +63,10 @@ namespace TP_02_2018
             
             // Muestro solo Moto
             Console.WriteLine(estacionamiento.Mostrar(estacionamiento, Estacionamiento.ETipo.Moto));
-            Console.WriteLine("<-----------PRESIONE UNA TECLA PARA CONTINUAR----------->       Cons");
+            Console.WriteLine("<-----------PRESIONE UNA TECLA PARA CONTINUAR----------->       ");
             Console.Beep();
+            // Se agrego un parada ReadKey() para poder visualizar El Objeto Moto c2 nuevamente agregado a la lista
+            Console.ReadKey();
             Console.Clear();
 
             // Muestro solo Automovil

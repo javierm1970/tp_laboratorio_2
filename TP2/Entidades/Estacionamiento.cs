@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -12,18 +13,23 @@ namespace Entidades
     /// </summary>
     public sealed class Estacionamiento
     {
+        //Atributos de la Clase Estacionamiento
         private List<Vehiculo> vehiculos;
         private int espacioDisponible;
+        
+        //Enumerador anidado en la clase Estacionamiento
         public enum ETipo
         {
             Moto, Automovil, Camioneta, Todos
         }
 
         #region "Constructores"
+        //Constructor que inicializa la Lista vehiculo
         private Estacionamiento()
         {
             this.vehiculos = new List<Vehiculo>();
         }
+        //Constructor que inicializa los atributos de la Clase
         public Estacionamiento(int espacioDisponible):this()
         {
             this.espacioDisponible = espacioDisponible;
@@ -37,7 +43,6 @@ namespace Entidades
         /// <returns></returns>
         public override string ToString()
         {
-            
             return Mostrar(this, ETipo.Todos);
         }
         #endregion
@@ -53,43 +58,32 @@ namespace Entidades
         /// <returns></returns>
         public string Mostrar(Estacionamiento c, ETipo tipo)
         {
-            StringBuilder sb = new StringBuilder();
+            //declaracion de una variable ETipo q sirve para filtrar en el foreach (tipo) a imprimir en pantalla
+            ETipo tipoVerifica=tipo;
 
+            StringBuilder sb = new StringBuilder();
             sb.AppendFormat("Tenemos {0} lugares ocupados de un total de {1} disponibles", c.vehiculos.Count, c.espacioDisponible);
             sb.AppendLine("");
+
             foreach (Vehiculo v in c.vehiculos)
             {
                 if (v is Moto)
                 {
-                    tipo = ETipo.Moto;
+                    tipoVerifica = ETipo.Moto;
                 }
                 else if (v is Automovil)
                 {
-                    tipo = ETipo.Automovil;
+                    tipoVerifica = ETipo.Automovil;
                 }
                 else if (v is Camioneta)
                 {
-                    tipo = ETipo.Camioneta;
-                }
-                else
-                {
-                    tipo = ETipo.Todos;
+                    tipoVerifica = ETipo.Camioneta;
                 }
 
-                switch (tipo)
+                if (tipo == ETipo.Todos || tipo==tipoVerifica)
                 {
-                    case ETipo.Camioneta:
-                        sb.AppendLine(v.Mostrar());
-                        break;
-                    case ETipo.Moto:
-                        sb.AppendLine(v.Mostrar());
-                        break;
-                    case ETipo.Automovil:
-                        sb.AppendLine(v.Mostrar());
-                        break;
-                    default:
-                        sb.AppendLine(v.Mostrar());
-                        break;
+                    sb.AppendLine(v.Mostrar());
+                //Se quita el Switch Todas las opciones hacen lo mismo    
                 }
             }
             return sb.ToString();

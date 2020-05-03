@@ -8,8 +8,13 @@ using System.Drawing;
 
 namespace Entidades
 {
+    /// <summary>
+    /// La clase Automóvil Derivada de la Clase Base Vehiculo
+    /// deberá permitir que se instancien elementos del tipo Automóvil.
+    /// </summary>
     public class Automovil : Vehiculo
     {
+        //Enumerado ETipo (tipo de Automoviles)
         public enum ETipo 
         { 
             Monovolumen, Sedan 
@@ -17,7 +22,8 @@ namespace Entidades
         private ETipo tipo;
 
         /// <summary>
-        /// Por defecto, TIPO será Monovolumen
+        /// Por defecto, TIPO será Monovolumen se pasan por parametro los atributos que 
+        /// inicializara la Clase Base
         /// </summary>
         /// <param name="marca"></param>
         /// <param name="chasis"></param>
@@ -25,15 +31,23 @@ namespace Entidades
         public Automovil(EMarca marca, string chasis, ConsoleColor color)
             : base(chasis, marca, color)
         {
-            
+            //por defecto ETipo tipo = ETipo.MonoVolumen (no se necesita asignar)
         }
+        /// <summary>
+        /// Constructor que inicializara el atributo tipo y pasara al otro constructor
+        /// los datos que luego el segundo le pasara a la Base
+        /// </summary>
+        /// <param name="marca"></param>
+        /// <param name="codigo"></param>
+        /// <param name="color"></param>
+        /// <param name="tipo"></param>
         public Automovil(EMarca marca, string codigo, ConsoleColor color, ETipo tipo)
             :this(marca,codigo, color)
         {
             this.tipo = tipo;
         }
         /// <summary>
-        /// Los automoviles son medianos
+        /// Propiedad de solo lectura que especifica el tamaño de Los automoviles (Medianos)
         /// </summary>
         protected override ETamanio Tamanio
         {
@@ -42,7 +56,11 @@ namespace Entidades
                 return Vehiculo.ETamanio.Mediano;
             }
         }
-
+        /// <summary>
+        /// Mostrara los datos que obtenga del base.Mostrar() y
+        /// ampliara con los valores de los atributos propios de esta Clase
+        /// </summary>
+        /// <returns></returns>
         public override string Mostrar()
         {
             StringBuilder sb = new StringBuilder();
