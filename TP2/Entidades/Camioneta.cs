@@ -34,7 +34,7 @@ namespace Entidades
         }
         /// <summary>
         /// Mostrara los datos que obtenga del método de conversion explicita que contiene la base y
-        /// ampliara con los valores de los atributos propios de esta Clase
+        /// ampliara con el valor de la Propiedad Tamanio de esta Clase
         /// </summary>
         /// <returns></returns>
         public override string Mostrar()

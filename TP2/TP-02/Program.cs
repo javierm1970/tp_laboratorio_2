@@ -16,7 +16,7 @@ namespace TP_02_2018
             Console.SetWindowSize(Console.LargestWindowWidth / 2, Console.LargestWindowHeight - 2);
 
             // Nombre del alumno
-            Console.Title = "";
+            Console.Title = "Javier Alejandro Magdaleno - TP Nº 2 ";
 
             //Declaro e instancio un Objeto estacionamiento (Clase Estacionamiento)
             Estacionamiento estacionamiento = new Estacionamiento(6);

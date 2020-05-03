@@ -29,7 +29,7 @@ namespace Entidades
         }
         /// <summary>
         /// Mostrara los datos que obtenga del base.Mostrar() y
-        /// ampliara con los valores de los atributos propios de esta Clase
+        /// ampliara con el valor de la Prpiedad Tamanio de esta Clase
         /// </summary>
         /// <returns></returns>
         public override string Mostrar()

@@ -58,7 +58,7 @@ namespace Entidades
         }
         /// <summary>
         /// Mostrara los datos que obtenga del base.Mostrar() y
-        /// ampliara con los valores de los atributos propios de esta Clase
+        /// ampliara con los valores del atributo (ETipo tipo) y la Propiedad Tamanio de esta Clase
         /// </summary>
         /// <returns></returns>
         public override string Mostrar()
