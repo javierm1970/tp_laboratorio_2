@@ -129,6 +129,7 @@ namespace Entidades
                         flagSalida = true;
                         break;
                     }
+                    i++;
                 }
 
             } while (flagSalida);
