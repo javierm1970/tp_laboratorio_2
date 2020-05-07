@@ -65,6 +65,8 @@ namespace Entidades
         {
             StringBuilder sb = new StringBuilder();
 
+            //Si bien en el TP2 Funcional el titulo de este apartado es AUTOOVIL. 
+            //Decidi cambiarlo por AUTOMOVIL intuyendo que se trata de un error Ortografico 
             sb.AppendLine("AUTOMOVIL");
             sb.AppendLine(base.Mostrar());
             sb.AppendFormat("\nTAMAÑO : {0}", this.Tamanio);

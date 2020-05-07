@@ -115,14 +115,24 @@ namespace Entidades
         /// <returns></returns>
         public static Estacionamiento operator -(Estacionamiento c, Vehiculo p)
         {
-            foreach (Vehiculo v in c.vehiculos)
+            bool flagSalida;
+            
+            do
             {
-                if (v == p)
+                int i=0;
+                flagSalida = false;
+                foreach (Vehiculo v in c.vehiculos)
                 {
-                    c.vehiculos.Remove(p);
-                    break;
+                    if (v == p)
+                    {
+                        c.vehiculos.RemoveAt(i);
+                        flagSalida = true;
+                        break;
+                    }
                 }
-            }
+
+            } while (flagSalida);
+            
             return c;
         }
         #endregion
