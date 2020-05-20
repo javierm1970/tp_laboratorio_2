@@ -58,32 +58,23 @@ namespace Entidades
         /// <returns></returns>
         public static string Mostrar(Estacionamiento c, ETipo tipo)
         {
-            //declaracion de una variable ETipo q sirve para filtrar en el foreach (tipo) a imprimir en pantalla
-            ETipo tipoVerifica=tipo;
-
             StringBuilder sb = new StringBuilder();
             sb.AppendFormat("Tenemos {0} lugares ocupados de un total de {1} disponibles", c.vehiculos.Count, c.espacioDisponible);
             sb.AppendLine("");
-
             foreach (Vehiculo v in c.vehiculos)
             {
-                if (v is Moto)
-                {
-                    tipoVerifica = ETipo.Moto;
-                }
-                else if (v is Automovil)
-                {
-                    tipoVerifica = ETipo.Automovil;
-                }
-                else if (v is Camioneta)
-                {
-                    tipoVerifica = ETipo.Camioneta;
-                }
-
-                if (tipo == ETipo.Todos || tipo==tipoVerifica)
+                if (tipo == ETipo.Todos)
                 {
                     sb.AppendLine(v.Mostrar());
-                //Se quita el Switch Todas las opciones hacen lo mismo    
+                }
+                else 
+                { 
+                    if (v is Moto && tipo==ETipo.Moto ||
+                        v is Automovil && tipo == ETipo.Automovil ||
+                        v is Camioneta && tipo == ETipo.Camioneta)
+                    {
+                        sb.AppendLine(v.Mostrar());
+                    }
                 }
             }
             return sb.ToString();
