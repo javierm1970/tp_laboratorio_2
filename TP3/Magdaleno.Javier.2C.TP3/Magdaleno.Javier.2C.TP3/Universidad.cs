@@ -325,7 +325,7 @@ namespace Magdaleno.Javier._2C.TP3
         /// </summary>
         /// <param name="u"></param> Tipo Universidad
         /// <param name="clase"></param> Tipo Enumerado EClases
-        /// <returns> Profesor si el profesor no dicta esa clase 
+        /// <returns> Profesor el primer profesor que no dicte esa clase 
         /// de lo contrario retornara un Profesor null </returns>
         public static Profesor operator !=(Universidad u, EClases clase)
         {
