@@ -20,7 +20,10 @@ namespace UnitTest_TP3
         {
             // arrange
             Universidad uni = new Universidad();
+            
+            //a1 valores por defecto legajo=0, dni=1 
             Alumno a1 = new Alumno();
+            //a2 valores por defecto legajo=0, dni=1
             Alumno a2 = new Alumno();
 
             // act
@@ -32,7 +35,7 @@ namespace UnitTest_TP3
         }
         /// <summary>
         /// Testea que se lance la Excepcion DniInvalidoException cuando se intenta
-        /// crear el objeto del Tipo Profesro p3 con un dni inválido
+        /// crear el objeto del Tipo Profesor p3 con un dni inválido
         /// </summary>
         [TestMethod]
         [ExpectedException(typeof(DniInvalidoException))]
@@ -45,15 +48,18 @@ namespace UnitTest_TP3
             Profesor p3;
 
             // act
-
+            
+            //dni válido
             p1 = new Profesor(0,"","","38000001",Persona.ENacionalidad.Argentino);
+            //dni válido
             p2 = new Profesor(0,"","","38001",Persona.ENacionalidad.Argentino);
+            //dni inválido tamaño incorrecto
             p3 = new Profesor(0,"","","38000000000001",Persona.ENacionalidad.Argentino);
 
             // assert
         }
         /// <summary>
-        /// Testea que se cuando se crea una Universidad la lista Alumnos 
+        /// Testea que cuando se crea una Universidad la lista Alumnos 
         /// se instancie, que no sea null
         /// </summary>
         [TestMethod]
