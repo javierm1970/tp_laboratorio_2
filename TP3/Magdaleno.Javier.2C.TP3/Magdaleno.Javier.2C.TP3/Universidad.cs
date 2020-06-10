@@ -89,7 +89,7 @@ namespace Magdaleno.Javier._2C.TP3
         {
             get 
             {
-                if (i >0 && i < this.jornada.Count)
+                if (i >=0 && i < this.jornada.Count)
                 {
                     return this.jornada.ElementAt(i); 
                 }
