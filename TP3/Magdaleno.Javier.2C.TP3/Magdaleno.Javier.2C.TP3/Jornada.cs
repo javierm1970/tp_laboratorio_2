@@ -4,8 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Archivos;
+using EntidadesAbstractas;
 
-namespace Magdaleno.Javier._2C.TP3
+namespace EntidadesInstanciables
 {
     /// <summary>
     /// Clase Jornada representa una clase universitaria donde se especifican los siguientes datos:

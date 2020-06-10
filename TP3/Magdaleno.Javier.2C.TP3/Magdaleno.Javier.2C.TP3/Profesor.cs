@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using EntidadesAbstractas;
 
-namespace Magdaleno.Javier._2C.TP3
+namespace EntidadesInstanciables
 {
     /// <summary>
     /// Clase Profesor derivada de la Clase universitario

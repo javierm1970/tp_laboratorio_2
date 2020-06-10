@@ -5,10 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Excepciones;
+using System.Xml.Serialization;
 
 namespace EntidadesAbstractas
 
 {
+    [XmlInclude(typeof(Universitario))]
+    
     /// <summary>
     /// Clase abstrac Persona
     /// </summary>

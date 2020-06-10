@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Magdaleno.Javier._2C.TP3;
+using EntidadesInstanciables;
 using EntidadesAbstractas;
 using Excepciones;
 

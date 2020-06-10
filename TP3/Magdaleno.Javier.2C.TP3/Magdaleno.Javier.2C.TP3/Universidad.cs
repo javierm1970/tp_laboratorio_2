@@ -5,8 +5,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using EntidadesAbstractas;
 
-namespace Magdaleno.Javier._2C.TP3
+namespace EntidadesInstanciables
 {
     /// <summary>
     /// Clase Universidad contiene como atributo la lista de alumnos, profesores y jornadas
