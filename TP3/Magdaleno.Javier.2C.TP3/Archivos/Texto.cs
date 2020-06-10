@@ -49,7 +49,7 @@ namespace Archivos
                 // Abro el archivo ubicado en una dirección de la máquina
                 StreamReader sr = new StreamReader(archivo);
 
-                // Leo una línea de texto
+                // Leo un texto
                 datos = sr.ReadToEnd();
 
                 // Cierro el archivo

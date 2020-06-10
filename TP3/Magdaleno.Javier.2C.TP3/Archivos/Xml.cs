@@ -24,7 +24,6 @@ namespace Archivos
             {
                 writer = new XmlTextWriter(archivo, Encoding.UTF8);
                 XmlSerializer serializer = new XmlSerializer(typeof(T));
-                //TextWriter writer = new StreamWriter(archivo);
                 serializer.Serialize(writer, datos);
 
                 return true;
