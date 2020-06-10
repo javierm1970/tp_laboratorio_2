@@ -97,7 +97,7 @@ namespace Magdaleno.Javier._2C.TP3
             }
             set 
             {
-                if (i > 0 && i < this.Jornadas.Count)
+                if (i >= 0 && i < this.Jornadas.Count)
                 {
                     this.jornada.Insert(i, value); 
                 } 
@@ -127,7 +127,9 @@ namespace Magdaleno.Javier._2C.TP3
         /// de lo contrario false </returns>
         public static bool Guardar(Universidad uni)
         {
-            string miPath = string.Format(@"D:\prueba Archivos\Universidad.xml");
+            string miPath = string.Format("{0}{1}",
+                Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
+                "\\Universidad.xml");
             Xml<Universidad> reporteUniversidad = new Xml<Universidad>();
             if (reporteUniversidad.Guardar(miPath, uni))
             {
@@ -143,7 +145,9 @@ namespace Magdaleno.Javier._2C.TP3
         /// null si no fue posible </returns>
         public static Universidad Leer()
         {
-            string miPath = string.Format(@"D:\prueba Archivos\Universidad.xml");
+            string miPath = string.Format("{0}{1}",
+                Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
+                "\\Universidad.xml");
             Universidad auxUniversidad;
 
             Xml<Universidad> reporteUniversidad = new Xml<Universidad>();

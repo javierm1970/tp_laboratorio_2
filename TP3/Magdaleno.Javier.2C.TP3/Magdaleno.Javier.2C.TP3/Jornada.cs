@@ -95,7 +95,9 @@ namespace Magdaleno.Javier._2C.TP3
         /// <returns> bool, si se guardaro el archivo retorna true, de lo contrario false </returns>
         public static bool Guardar(Jornada jornada)
         {
-            string miPath = string.Format(@"D:\prueba Archivos\jornada.txt");
+            string miPath = string.Format("{0}{1}",
+                Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
+                "\\jornada.txt");
 
             if (!(jornada is null))
             {
@@ -115,7 +117,9 @@ namespace Magdaleno.Javier._2C.TP3
         /// <returns> bool, si se pudo leer el archivo retornara true, sino false </returns>
         public static string Leer()
         {
-            string miPath = string.Format(@"D:\prueba Archivos\jornada.txt");
+            string miPath = string.Format("{0}{1}",
+                Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
+                "\\jornada.txt");
             string textoLeido;
             Texto texto = new Texto();
             if (texto.Leer(miPath,out textoLeido))
