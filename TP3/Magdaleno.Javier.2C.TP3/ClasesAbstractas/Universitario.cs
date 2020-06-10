@@ -39,6 +39,24 @@ namespace EntidadesAbstractas
             this.legajo = legajo;
         }
 
+        #region Propiedades
+        /// <summary>
+        /// Propiedad que retorna o asigna un valor al atributo legajo
+        /// Solo para que se agregue a la Serialización de Universidad
+        /// </summary>
+        public int Legajo
+        {
+            get
+            {
+                return this.legajo;
+            }
+            set
+            {
+                this.legajo = value;
+            }
+        }
+        #endregion
+
         #region Métodos
         /// <summary>
         /// Sobreescritura del Método Equals
