@@ -101,6 +101,39 @@ namespace EntidadesAbstractas
             }
         }
         /// <summary>
+        /// Propiedad Nombre devolvera o incorporará un valor al atributo nombre
+        /// luego de validar que el valor asigndo no contenga caracteres inválidos
+        /// </summary>
+        public string Nombre
+        {
+            get
+            {
+                return this.nombre;
+            }
+            set
+            {
+                if (value == this.ValidarNombreApellido(value))
+                {
+                    this.nombre = value;
+                }
+            }
+        }
+        /// <summary>
+        /// Propiedad Nacionalidad devolvera o incorpora un valor al atributo nacionalidad
+        /// del Tipo ENacionalidad
+        /// </summary>
+        public ENacionalidad Nacionalidad
+        {
+            get
+            {
+                return this.nacionalidad;
+            }
+            set
+            {
+                this.nacionalidad = value;
+            }
+        }
+        /// <summary>
         /// Propiedad DNI devuelve o incorpora un valor al atributo dni de la Clase Persona
         /// luego de valiar el mismo, si el dni no corresponde con la nacionalidad
         /// lanzara una Excepción : NacionalidadInvalidaException
@@ -123,39 +156,6 @@ namespace EntidadesAbstractas
                 catch (NacionalidadInvalidaException e)
                 {
                     throw e;
-                }
-            }
-        }
-        /// <summary>
-        /// Propiedad Nacionalidad devolvera o incorpora un valor al atributo nacionalidad
-        /// del Tipo ENacionalidad
-        /// </summary>
-        public ENacionalidad Nacionalidad
-        {
-            get
-            {
-                return this.nacionalidad;
-            }
-            set
-            {
-                this.nacionalidad = value;
-            }
-        }
-        /// <summary>
-        /// Propiedad Nombre devolvera o incorporará un valor al atributo nombre
-        /// luego de validar que el valor asigndo no contenga caracteres inválidos
-        /// </summary>
-        public string Nombre
-        {
-            get
-            {
-                return this.nombre;
-            }
-            set
-            {
-                if (value == this.ValidarNombreApellido(value))
-                {
-                    this.nombre = value;
                 }
             }
         }

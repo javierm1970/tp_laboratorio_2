@@ -2,7 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Excepciones;
 using EntidadesAbstractas;
-using Magdaleno.Javier._2C.TP3;
+using EntidadesInstanciables;
 
 namespace UnitTest_TP3
 {
@@ -60,14 +60,14 @@ namespace UnitTest_TP3
         }
         /// <summary>
         /// Testea que cuando se crea una Universidad la lista Alumnos 
-        /// se instancie, que no sea null
+        /// se inicialice, y que no sea null
         /// </summary>
         [TestMethod]
-        public void TestInstanciarAtributo()
+        public void TestInicializarAlumnos()
         {
             // arrange
 
-            Universidad uni;;
+            Universidad uni;
 
             // act
 
@@ -75,6 +75,28 @@ namespace UnitTest_TP3
 
             // assert
             Assert.IsNotNull(uni.Alumnos);
+        }
+        /// <summary>
+        /// Testea que cuando se suma una clase a la universidad, si no hay profesor en la lista 
+        /// se lanzará una Exception SinProfesorException
+        /// </summary>
+        [TestMethod]
+        [ExpectedException(typeof(SinProfesorException))]
+        public void TestInicializarJornada()
+        {
+            // arrange 
+            Universidad uni2;
+            Alumno a1;
+
+            // act
+
+            uni2 = new Universidad();
+            a1 = new Alumno();
+            uni2 += a1;
+            uni2 += Universidad.EClases.Laboratorio;
+
+            // assert
+
         }
     }
 }
