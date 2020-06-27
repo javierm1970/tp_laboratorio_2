@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using EntidadesInstanciables;
 using EntidadesAbstractas;
 using Excepciones;
+using Archivos;
 
 namespace Test_Consola
 {
@@ -125,6 +126,17 @@ namespace Test_Consola
                 Console.WriteLine(e.Message);
             }
             Console.ReadKey();
+
+            Universidad uni2 = uni;
+
+            Xml<Universidad> mixml = new Xml<Universidad>();
+            mixml.Guardar(@"D:\prueba Archivos\prueba5.xml",uni2);
+
+            Universidad uni3;
+            mixml.Leer(@"D:\prueba Archivos\prueba5.xml",out uni3);
+
+            Console.ReadKey();
+
         }
     }
 }
