@@ -134,6 +134,12 @@ namespace FormCorreoUTN
                 {
                     MessageBox.Show("Error al intentar cargar un Tracking Repetido");
                 }
+                catch (Exception)
+                {
+                    MessageBox.Show("Excepción no Controlada. Se cerrará la aplicación");
+                    this.Close();
+                }
+
                 ActualizarEstados();
             }
             else
