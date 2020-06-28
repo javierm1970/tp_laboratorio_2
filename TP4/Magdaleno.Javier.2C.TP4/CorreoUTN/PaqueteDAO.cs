@@ -10,11 +10,15 @@ using Excepciones;
 
 namespace Entidades
 {
+    // Clase estática para realizar la conexion, consulta o instrucciones a la base de datos 
     public static class PaqueteDAO
     {
+        // Atributos estáticos de la clase
         private static SqlCommand comando;
         private static SqlConnection conexion;
-
+        /// <summary>
+        /// Constructor por defecto que inicializa los atributos de la clase
+        /// </summary>
         static PaqueteDAO()
         {
             conexion = new SqlConnection();

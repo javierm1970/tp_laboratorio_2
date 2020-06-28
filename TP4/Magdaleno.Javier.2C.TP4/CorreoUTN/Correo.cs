@@ -9,15 +9,26 @@ using Excepciones;
 
 namespace Entidades
 {
+    /// <summary>
+    /// Clase Correo implementa la Interface IMostras<list<Paquete>>"
+    /// </summary>
     public class Correo : IMostrar<List<Paquete>>
     {
+        // Atributos privados de la Clase correo, Lista paquetes y lista de Hilos
         private List<Thread> mockPaquetes;
         private List<Paquete> paquetes;
+        /// <summary>
+        /// Constructor público y sin parámetros que inicializa las atributos listas de la clase
+        /// </summary>
         public Correo()
         {
             this.mockPaquetes = new List<Thread>();
             this.paquetes = new List<Paquete>();
         }
+        /// <summary>
+        /// Obtiene un objeto <param> List </param> de paquetes.
+        /// Devuelve un objeto list de paquetes
+        /// </summary>
         public List<Paquete> Paquete
         {
             get
@@ -29,6 +40,9 @@ namespace Entidades
                 this.paquetes = value;
             }
         }
+        /// <summary>
+        /// Cierra todos los hilos incluidos en una Lista
+        /// </summary>
         public void FinEntregas()
         {
             if (!(this.mockPaquetes is null))
@@ -42,6 +56,11 @@ namespace Entidades
                 }
             }
         }
+        /// <summary>
+        /// Devuelve todos los datos de cada paquete de una lista pasada como parámetro
+        /// </summary>
+        /// <param name="elementos"></param>
+        /// <returns> string </returns>
         public string MostrarDatos(IMostrar<List<Paquete>> elementos)
         {
             StringBuilder sb = new StringBuilder();
@@ -57,21 +76,36 @@ namespace Entidades
             
             return sb.ToString();
         }
+        /// <summary>
+        /// Incorpora un paquete a la lista si no existe previamente.
+        /// Crea un hilo y lo ejecuta, el hilo representa el ciclo de vida del paquete.
+        /// Si el paquete existe se lanzara la Exception: TrackingIDRepetidoException()
+        /// </summary>
+        /// <param name="c"></param> Tipo Correo
+        /// <param name="p"></param> Tipo Paquete
+        /// <returns> Tipo Correo </returns>
         public static Correo operator +(Correo c, Paquete p)
         {
-            if (!(c is null) && !(p is null))
+            try
             {
-                foreach (Paquete item in c.Paquete)
+                if (!(c is null) && !(p is null))
                 {
-                    if (item.TrackingID == p.TrackingID)
+                    foreach (Paquete item in c.Paquete)
                     {
-                        throw new TrackingIDRepetidoException();
+                        if (item.TrackingID == p.TrackingID)
+                        {
+                            throw new TrackingIDRepetidoException();
+                        }
                     }
+                    c.Paquete.Add(p);
+                    Thread hiloMockCicloDeVida = new Thread(p.MockCicloDeVida);
+                    c.mockPaquetes.Add(hiloMockCicloDeVida);
+                    hiloMockCicloDeVida.Start();
                 }
-                c.Paquete.Add(p);
-                Thread hiloMockCicloDeVida = new Thread(p.MockCicloDeVida);
-                c.mockPaquetes.Add(hiloMockCicloDeVida);
-                hiloMockCicloDeVida.Start();
+            }
+            catch (SqlReadOrWriteException ex)
+            {
+                throw ex;
             }
             return c;
         }

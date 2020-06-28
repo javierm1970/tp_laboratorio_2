@@ -128,7 +128,7 @@
             // mostrarToolStripMenuItem
             // 
             this.mostrarToolStripMenuItem.Name = "mostrarToolStripMenuItem";
-            this.mostrarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.mostrarToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
             this.mostrarToolStripMenuItem.Text = "&Mostrar";
             this.mostrarToolStripMenuItem.Click += new System.EventHandler(this.mostrarToolStripMenuItem_Click_1);
             // 
@@ -150,6 +150,7 @@
             // mkTextBoxTrackingID
             // 
             this.mkTextBoxTrackingID.Location = new System.Drawing.Point(15, 51);
+            this.mkTextBoxTrackingID.Mask = "000-000-0000";
             this.mkTextBoxTrackingID.Name = "mkTextBoxTrackingID";
             this.mkTextBoxTrackingID.Size = new System.Drawing.Size(181, 20);
             this.mkTextBoxTrackingID.TabIndex = 0;
@@ -216,6 +217,7 @@
             this.Name = "FrmPpal";
             this.Text = "Correo UTN por Javier.Magdaleno.2C";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmPpal_FormClosing);
+            this.Load += new System.EventHandler(this.FrmPpal_Load);
             this.groupBoxEstado.ResumeLayout(false);
             this.groupBoxEstado.PerformLayout();
             this.contextMenuStrip1.ResumeLayout(false);

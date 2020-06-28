@@ -9,15 +9,16 @@ using Excepciones;
 
 namespace Extensiones
 {
+    // Clase estatica extension de otras clases
     public static class GuardaString
     {
         /// <summary>
-        /// que Escribe y agrega datos en formato Texto.
+        /// Escribe y/o agrega datos en formato Texto a un archivo pasado por parámetro.
         /// Caso contrario, lanzará la excepción: ArchivosException().
         /// </summary>
-        /// <param name="archivo"></param>
-        /// <param name="datos"></param>
-        /// <returns></returns>
+        /// <param name="archivo"></param> ruta donde estará el archivo a escribir
+        /// <param name="datos"></param> datos que se escribirán en el archivo
+        /// <returns> true si se pudo escribir en el archivo, false caso contrario </returns>
         public static bool Guardar(this string texto,string archivo)
         {
             bool flagGuardar = false;
