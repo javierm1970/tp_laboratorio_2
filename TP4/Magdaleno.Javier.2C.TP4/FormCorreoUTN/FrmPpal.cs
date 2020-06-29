@@ -119,27 +119,34 @@ namespace FormCorreoUTN
         /// <param name="e"></param>
         private void btnAgregar_Click(object sender, EventArgs e)
         {
+            bool cierra = false;
             if (!(textBoxDireccion.Text=="") && !(mkTextBoxTrackingID.Text==""))
             {
                 StringBuilder sb = new StringBuilder();
                 Paquete nuevoPaquete = new Paquete(textBoxDireccion.Text,
                     mkTextBoxTrackingID.Text);
                 nuevoPaquete.InformaEstado += this.paq_InformaEstado;
-
+                nuevoPaquete.InformaExceptcion += RecibeExcepcion;
                 try
                 {
                     correo = correo + nuevoPaquete;
                 }
-                catch (TrackingIDRepetidoException)
+                catch (TrackingIDRepetidoException ex)
                 {
-                    MessageBox.Show("Error al intentar cargar un Tracking Repetido");
+                    MessageBox.Show(ex.Message);
                 }
                 catch (Exception)
                 {
                     MessageBox.Show("Excepción no Controlada. Se cerrará la aplicación");
-                    this.Close();
+                    cierra = true;
                 }
-
+                finally
+                {
+                    if (cierra)
+                    {
+                        this.Close();
+                    }
+                }
                 ActualizarEstados();
             }
             else
@@ -168,37 +175,23 @@ namespace FormCorreoUTN
         {
             this.MostrarInforamcion<Paquete>((IMostrar<Paquete>)listBoxEntregado.SelectedItem);
         }
-        private static string InnerString(Exception ex)
+        /// <summary>
+        /// Manejador del evento InformaExceptcion 
+        /// </summary>
+        /// <param name="ex"></param> Excepcion controlada por el evento
+        private void RecibeExcepcion(Exception ex)
         {
-            StringBuilder sb = new StringBuilder();
-            if (!(ex.InnerException is null))
+            if (this.InvokeRequired)
             {
-                Exception e = ex.InnerException;
-                do
-                {
-                    sb.AppendLine(e.Message);
-                    e = e.InnerException;
-
-                } while (!(e is null));
+                Paquete.DelegadoExcepcion d = new Paquete.DelegadoExcepcion(RecibeExcepcion);
+                this.Invoke(d, new object[] { ex });
             }
-            return sb.ToString();
-        }
-        private void MyHandler(object sender, UnhandledExceptionEventArgs args)
-        {
-            StringBuilder sb = new StringBuilder();
-            Exception ex = (Exception)args.ExceptionObject;
-            sb.AppendLine(ex.Message);
-            sb.AppendLine(InnerString(ex));
-            sb.AppendLine(ex.StackTrace);
-            MessageBox.Show(sb.ToString(), "Error!");
-            correo.FinEntregas();
-            this.Close();
-        }
-
-        private void FrmPpal_Load(object sender, EventArgs e)
-        {
-            currentDomain = AppDomain.CurrentDomain;
-            currentDomain.UnhandledException += new UnhandledExceptionEventHandler(MyHandler);
+            else
+            {
+                string mensaje = string.Format("{0} \n{1}", ex.Message, "El Programa se cerrará...");
+                MessageBox.Show(mensaje);
+                this.Close();
+            }
         }
     }
 }

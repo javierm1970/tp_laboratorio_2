@@ -200,6 +200,7 @@
             // 
             // richTextBoxMostrar
             // 
+            this.richTextBoxMostrar.Enabled = false;
             this.richTextBoxMostrar.Location = new System.Drawing.Point(12, 354);
             this.richTextBoxMostrar.Name = "richTextBoxMostrar";
             this.richTextBoxMostrar.Size = new System.Drawing.Size(419, 161);
@@ -217,7 +218,6 @@
             this.Name = "FrmPpal";
             this.Text = "Correo UTN por Javier.Magdaleno.2C";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmPpal_FormClosing);
-            this.Load += new System.EventHandler(this.FrmPpal_Load);
             this.groupBoxEstado.ResumeLayout(false);
             this.groupBoxEstado.PerformLayout();
             this.contextMenuStrip1.ResumeLayout(false);

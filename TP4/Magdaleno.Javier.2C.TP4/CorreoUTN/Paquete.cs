@@ -25,8 +25,10 @@ namespace Entidades
         private string direccionEntrega;
         private EEstado estado;
         private string trackingID;
-        public event DelegadoEstado InformaEstado;
         public delegate void DelegadoEstado(object sender, EventArgs e);
+        public event DelegadoEstado InformaEstado;
+        public delegate void DelegadoExcepcion(Exception ex);
+        public event DelegadoExcepcion InformaExceptcion;
         /// <summary>
         /// Constructor de la Clase Paquete
         /// </summary>
@@ -96,7 +98,14 @@ namespace Entidades
             Thread.Sleep(4000);
             this.estado = EEstado.Entregado;
             InformaEstado.Invoke(this, new EventArgs());
-            PaqueteDAO.Insertar(this);
+            try
+            {
+                PaqueteDAO.Insertar(this);
+            }
+            catch (SqlReadOrWriteException ex)
+            {
+                InformaExceptcion.Invoke(ex);
+            }
         }
         /// <summary>
         /// Retornará un string con la información de un objeto paquete
@@ -105,15 +114,8 @@ namespace Entidades
         /// <returns> string </returns>
         public string MostrarDatos (IMostrar<Paquete> elementos)
         {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("\n");
-            sb.AppendLine("Informacion del Paquete");
-            sb.AppendFormat("IDTracking: {0} \nDirección: {1} \nEstado: {2}",
-                ((Paquete)elementos).TrackingID, ((Paquete)elementos).DireccionEntrega,
-                ((Paquete)elementos).estado);
-            sb.Append("\n");
-
-            return sb.ToString();
+            return string.Format("{0} para {1}", ((Paquete)elementos).trackingID,
+                ((Paquete)elementos).direccionEntrega); 
         }
         /// <summary>
         /// Sobreescritura del Método ToString() 
@@ -121,7 +123,7 @@ namespace Entidades
         /// <returns> string que representa el "id del tracking" y la "direccion destino" </returns>
         public override string ToString()
         {
-            return string.Format("{0} para {1}", this.trackingID, this.direccionEntrega);
+            return string.Format("{0} para {1}", this.TrackingID, this.DireccionEntrega);
         }
         /// <summary>
         /// Verifica si dos paquetes tienen el mismo id de tracking

@@ -69,7 +69,7 @@ namespace Entidades
             {
                 foreach (Paquete item in ((Correo)elementos).Paquete)
                 {
-                    sb.AppendLine(string.Format("{0} para {1} {2}",
+                    sb.AppendLine(string.Format("{0} para {1} [{2}]",
                         item.TrackingID, item.DireccionEntrega, item.Estado));
                 } 
             }
